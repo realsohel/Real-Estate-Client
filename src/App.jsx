@@ -3,6 +3,7 @@ import Hero from "./components/Hero/Hero";
 import "./app.css"
 import Companies from "./components/Companies/Companies";
 import Residencies from "./components/Residiencies/Residencies";
+import Value from "./components/Value/Value";
 function App() {
   return (
     <div className="app">
@@ -14,6 +15,7 @@ function App() {
       </div>
       <Companies/>
       <Residencies/>
+      <Value/>
     </div>
   );
 }
