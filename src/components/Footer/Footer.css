@@ -1,0 +1,44 @@
+.f-container{
+    justify-content: space-between;
+    background: var(--lightBlue)
+}
+
+.f-left{
+    gap: 1rem;
+}
+
+.f-left>:nth-child(3){
+    margin-top: 0.5rem;
+}
+
+.f-follow{
+    justify-content: space-between;
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+.f-follow .icon{
+    /* background: var(--blue); */
+    border-radius: 100%;
+    border: none;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+.f-follow>:hover{
+    background: var(--blue);
+}
+
+
+.f-follow .icon>:nth-child(1){
+    margin-right:2px;
+    margin-left: 2px;
+}
+.f-menu{
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    font-weight: 500;
+}
+.f-menu>:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
