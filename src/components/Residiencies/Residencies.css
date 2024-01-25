@@ -75,3 +75,10 @@
     background-color: rgba(162, 241, 255,0.4);;
     /* color: white; */
 }
+
+@media (max-width:640px) {
+    .r-head{
+        align-items: center;
+    }
+    
+}
