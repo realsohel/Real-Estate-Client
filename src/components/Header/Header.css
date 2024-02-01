@@ -1,6 +1,8 @@
 .h-wrapper{
     /* background: var(--black); */
     color: white;
+    background: var(--black);
+    overflow: hidden;
 }
 
 .h-container{

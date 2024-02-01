@@ -1,8 +1,8 @@
 import React from 'react'
-import {HiLocationMarker} from "react-icons/hi"
 import  CountUp from 'react-countup'
 import "./Hero.css"
 import {motion, spring} from 'framer-motion'
+import SearchBar from '../SearchBar/SearchBar'
 const Hero = () => {
     return (
         <section className="hero-wrapper">
@@ -28,11 +28,7 @@ const Hero = () => {
                         <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, itaque!</span>
                     </div>
 
-                    <div className="flexCenter search-bar">
-                        <HiLocationMarker color='var(--blue)' size={25} />
-                        <input type="text" placeholder='Search here'/>
-                        <button className="button">Search</button>
-                    </div>
+                    <SearchBar/>
 
                     <div className="flexCenter stats">
                         <div className="flexColCenter stat">
