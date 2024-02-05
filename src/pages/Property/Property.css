@@ -1,0 +1,62 @@
+.pr-container{
+    gap: 2rem;
+    position: relative;
+}
+
+.pr-container .like{
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    cursor: pointer;
+}
+
+.pr-container>img{
+    align-self: center;
+    max-height: 35rem;
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+.pr-details{
+    width: 100%;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.pr-details>div{
+    flex: 1;
+    gap: 1.5rem;
+}
+
+.pr-details .left .head{
+    justify-content: space-between;
+    width: 100%;
+}
+
+.facilities{
+    gap: 3rem;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+}
+
+
+.pr-details .left .facilities .facility{
+    gap: 0.5rem;
+}
+
+.address{
+    gap: 0.5rem;
+    justify-content: space-between;
+}
+
+.pr-details .button{
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.pr-details .button>:hover{
+    transform: scale(1.05);
+    width: 80%;
+}
