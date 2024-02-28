@@ -10,12 +10,18 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
+    "@date-io/date-fns": "^3.0.0",
     "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
     "@mantine/core": "^7.5.2",
     "@mantine/dates": "^7.5.2",
     "@mantine/form": "^7.5.2",
     "@mantine/hooks": "^7.5.2",
+    "@mui/material": "^5.15.10",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.16",
+    "@mui/x-date-pickers-pro": "^6.19.4",
     "axios": "^1.6.7",
+    "date-fns": "^3.3.1",
     "dayjs": "^1.11.10",
     "esri-leaflet-geocoder": "2.3.3",
     "framer-motion": "^10.8.5",
@@ -33,6 +39,7 @@
     "react-router-dom": "6.10.0",
     "react-spinners": "^0.13.8",
     "react-toastify": "^10.0.4",
+    "styled-components": "^6.1.8",
     "swiper": "^9.1.1"
   },
   "devDependencies": {

@@ -1,24 +1,38 @@
-import React, { useEffect } from 'react'
-import { useQuery } from 'react-query'
+import React, { useContext, useEffect, useState } from 'react'
+import { useMutation, useQuery } from 'react-query'
 import { useLocation } from 'react-router-dom';
-import { getProperty } from '../../utils/api';
+import { getProperty, removeBooking } from '../../utils/api';
 import { PuffLoader } from 'react-spinners';
-import { AiFillHeart } from 'react-icons/ai';
 import { FaBed, FaCar, FaShower} from 'react-icons/fa'
 import {MdLocationPin} from "react-icons/md"
 import "./Property.css";
 import Map from '../../components/Map/Map';
+import useAuthCheck from '../../hooks/useAuthCheck';
+import { useAuth0 } from '@auth0/auth0-react';
+import BookingModal from '../../components/BookingModal/BookingModal.jsx';
+import UserDetailsContext from '../../context/userDetailsContext.js';
+import { Button } from '@mui/material';
+import Heart from '../../components/Heart/Heart.jsx';
 
 const Property = () => {
     const {pathname} = useLocation();
     const id  = pathname.split('/').slice(-1)[0];
-    // console.log(id);
     const {data,isError,isLoading} = useQuery(["residency",id],()=>getProperty(id));
-    console.log(data);
+    const {user,isAuthenticated} = useAuth0();
+    const [modalOpened,setModalOpened] = useState(false);
+    const {validateUser} = useAuthCheck();
 
-    // useEffect(()=>{
-    //     window.scrollTo(0, 0);
-    // },[])
+    const{userDetails:{token, bookings}, setUserDetails} =useContext(UserDetailsContext);
+    // console.log(id);
+    const {mutate:cancelBooking, isLoading:cancelling} = useMutation({
+        mutationFn:()=>removeBooking(id,user?.email,token),
+        onSuccess:()=>{
+            setUserDetails((prev)=>({
+                ...prev,
+                bookings: prev.bookings.filter((booking)=>booking.id!==id)
+            }))
+        }
+    })
     
     if(isError){
         return (
@@ -45,13 +59,11 @@ const Property = () => {
         )
     }
 
-    
-
     return (
         <section className="pr-wrapper">
             <div className="flexColStart paddings innerWidth pr-container">
                 <div className="like">
-                <AiFillHeart size={24} color='white'/>
+                    <Heart id={id}/>
                 </div>
                 <img src={data[0]?.image} alt="House img" />
                 
@@ -97,9 +109,40 @@ const Property = () => {
                         </div>
 
                         {/* button */}
-                        <button className="button">
+                        {bookings?.map((booking)=> booking.id).includes(id)?(
+                            <>
+                            <Button  
+                                variant='outlined'
+                                w={"100%"}
+                                color="error"
+                                onClick={()=>{
+                                    cancelBooking()
+                                }}
+                                disabled={cancelling}
+                            >
+                                <span>Cancel Booking</span>
+                            </Button>
+                            <span>
+                                Your visit already booked for date:  
+                                { bookings?.filter((booking)=>booking?.id===id)[0].date}
+                            </span>
+                            </>
+                            
+                            ):
+                            <button 
+                            className="button"
+                            onClick={()=>{
+                                validateUser() && setModalOpened(true);
+                            }}
+                        >
                             Book your visit
-                        </button>
+                            </button>
+                        }
+
+                        <BookingModal 
+                            opened={modalOpened} setOpened={setModalOpened} 
+                            propertyId={id} email={user?.email}
+                        />
                     </div>
 
                     <div className="right-map">

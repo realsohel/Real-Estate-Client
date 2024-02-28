@@ -1,0 +1,18 @@
+.material-Box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 600px;
+    background: #fff;
+    box-shadow:  var(--shadow);
+    text-align: center;
+    border: 1px solid gray ;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.material-Box .fixDate{
+    margin: 1rem;
+    justify-content: space-evenly;
+}
